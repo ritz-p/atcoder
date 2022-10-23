@@ -1,5 +1,5 @@
 [package]
-name = "263_A"
+name = "274_B"
 version = "0.1.0"
 edition = "2018"
 
@@ -7,3 +7,4 @@ edition = "2018"
 
 [dependencies]
 proconio = "0.4.3"
+itertools = "0.10.5"
