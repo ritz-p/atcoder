@@ -30,12 +30,19 @@ fn main(){
 }
 
 fn get_common_divider(mut a:usize,mut b:usize) -> usize{
+    let mut zero = false;
+    if a == 0 || b == 0{
+        zero = true;
+    }
     // println!("{},{}",a,b);
-    while a != 0 && b != 0{
+    while !zero{
         if a <= b{
             b %= a;
         }else{
             a %= b;
+        }
+        if a == 0 || b == 0{
+            zero = true;
         }
     }
     if a <= b{
