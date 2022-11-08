@@ -14,6 +14,7 @@ fn main(){
     }
     println!("{}",res);
 }
+//ユークリッド互除法
 fn get_common_divider(mut a:usize,mut b:usize) -> usize{
     let mut zero = false;
     while !zero{
