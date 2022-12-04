@@ -7,3 +7,4 @@ edition = "2018"
 
 [dependencies]
 proconio = "0.4.3"
+num-integer = "0.1"
