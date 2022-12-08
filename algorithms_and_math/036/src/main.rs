@@ -15,7 +15,7 @@ fn main() {
   let b_rad = 2.0 * PI * (h / 12.0) + (2.0 * PI / 12.0) * (m / 60.0);
   let bx = b * b_rad.cos();
   let by = b * b_rad.sin();
-  let res = ((bx-ax).powf(2.0)+(by-ay).powf(2.0)).sqrt();
+  let res = ((bx-ax)*(bx-ax)+(by-ay)*(by-ay)).sqrt();
  
   println!("{}", res);
 }
