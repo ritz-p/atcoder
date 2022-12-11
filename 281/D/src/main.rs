@@ -1,6 +1,5 @@
 use proconio::input;
-use itertools::Itertools;
-
+use std::cmp::max;
 fn main(){
     input!{
         n:usize,
@@ -8,20 +7,23 @@ fn main(){
         d:usize,
         mut arr:[usize;n],
     };
-    let mut results = vec![];
-    for comb in (0..n).combinations(k){
-        // println!("{:?}",comb);
-        let mut total = 0;
-        for i in 0..k{
-            total += arr[comb[i]]
+    let mut dp:Vec<Vec<Vec<isize>>> = vec![vec![vec![-1;d];k+1];n+1];
+    // println!("{:?}",dp);
+    dp[0][0][0] = 0;
+    for i in 0..n{
+        for j in 0..=k{
+            for l in 0..d{
+                if dp[i][j][l] == -1{
+                    continue;
+                }
+                dp[i+1][j][l] = max(dp[i][j][l],dp[i+1][j][l]);
+                // println!("{}",dp[i+1][j][l]);
+                // println!("{}",l+arr[i]);
+                if j < k{
+                    dp[i+1][j+1][(l+arr[i])%d] = max(dp[i+1][j+1][(l+arr[i])%d],dp[i][j][l]+(arr[i] as isize));
+                }
+            }
         }
-        results.push(total);
     }
-    let mut max:isize = -1;
-    for i in 0..results.len(){
-        if results[i] % d == 0 && results[i] as isize > max{
-            max = results[i] as isize;
-        }
-    }
-    println!("{}",max);
+    println!("{}",dp[n][k][0]);
 }

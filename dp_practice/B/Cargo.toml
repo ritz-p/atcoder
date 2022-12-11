@@ -1,5 +1,5 @@
 [package]
-name = "281_d"
+name = "dp_practice_b"
 version = "0.1.0"
 edition = "2018"
 
@@ -7,3 +7,4 @@ edition = "2018"
 
 [dependencies]
 proconio = "0.4.3"
+num = "0.4"
