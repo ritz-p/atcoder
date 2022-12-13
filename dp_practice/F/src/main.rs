@@ -42,4 +42,5 @@ fn main() {
             print!("{}", answer[chr])
         }
     }
+    // println!("\n{:?}",memo);
 }
