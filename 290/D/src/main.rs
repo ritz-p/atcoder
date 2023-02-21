@@ -1,30 +1,14 @@
 use proconio::input;
+use num_integer::gcd;
 
 fn main(){
     input!{
         t: usize,
+        tests: [(usize,usize,usize);t],
     };
-    let mut tests = vec![];
-
-    for i in 0..t{
-        input!{
-            n: usize,
-            d: usize,
-            k: usize,
-        };
-        let test = vec![n,d,k];
-        tests.push(test);
-    }
-    println!("{:?}",tests);
-
-    for i in 0..t{
-        let mut flags = vec![false,n];
-        // 1の行程
-        flags[0] = true;
-        let mut last = 0;
-        for j in 0..tests[i][2]{
-            last = (last + tests[i][1]) % n;
-            for l in 
-        }
+    for &(n,d,k) in &tests{
+        let k = k - 1;
+        let a = n / gcd(n,d);
+        println!("{}",d * k % n + k / a);
     }
 }
