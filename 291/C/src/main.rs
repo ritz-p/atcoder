@@ -1,17 +1,14 @@
 use proconio::input;
-use std::collections::HashMap;
-// unwrap() を何回も使うと遅い
-// 型をちゃんとつける(HashMap,Vec,HashSet など)
+
 fn main(){
     input!{
         n: usize,
         s: String,
     };
-    let mut x:i32 = 0;
-    let mut y:i32 = 0;
-    let a = s.chars().collect::<Vec<char>>();
-    let mut hash: HashMap<(i32, i32), bool> = HashMap::new();
-    hash.insert((0,0),true);
+    let mut x:isize = 0;
+    let mut y:isize = 0;
+    let mut xy:Vec<(isize, isize)> = vec![(0,0)];
+  	let a = s.chars().collect::<Vec<char>>();
     for i in 0..n{
         if a[i] == 'R'{
             x += 1;
@@ -22,15 +19,13 @@ fn main(){
         }else if a[i] == 'D'{
             y -= 1;
         }
-
-        let val = hash.get(&(x,y));
-        match val{
-            Some(true) => {
-                println!("Yes");
-                return;
-            },
-            _ => {hash.insert((x,y),true);},
-        };
+        xy.push((x,y));
     }
-    println!("No");
+    xy.sort_unstable();
+    xy.dedup();
+    if xy.len() < n+1{
+        println!("Yes");
+    }else{
+        println!("No"); 
+    }
 }
