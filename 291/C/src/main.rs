@@ -1,6 +1,7 @@
 use proconio::input;
 use std::collections::HashMap;
 // unwrap() を何回も使うと遅い
+// 型をちゃんとつける(HashMap,Vec,HashSet など)
 fn main(){
     input!{
         n: usize,
