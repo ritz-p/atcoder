@@ -1,6 +1,6 @@
 mkdir $1
 
-alphabet=(A B C D E F)
+alphabet=(A B C D E F G Ex)
 for abc in ${alphabet[@]}
 do
     mkdir -p $1/$abc/src
