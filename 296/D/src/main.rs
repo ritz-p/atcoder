@@ -5,7 +5,7 @@ fn main() {
         n: usize,
         m: usize,
     }
-    if n * n < i {
+    if n * n < m {
         println!("-1");
         return;
     }
