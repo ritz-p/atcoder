@@ -1,4 +1,4 @@
-mkdir $1
+mkdir -p ABC/$1
 
 alphabet=(A B C D E F G Ex)
 for abc in ${alphabet[@]}
