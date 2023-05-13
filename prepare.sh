@@ -1,3 +1,7 @@
+if [ -z "${1}" ]; then
+    echo "You should set contest number"
+    exit 1
+fi
 mkdir -p ABC/$1
 
 alphabet=(A B C D E F G Ex)
