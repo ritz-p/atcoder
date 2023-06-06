@@ -7,3 +7,4 @@ edition = "2018"
 [dependencies]
 proconio = "0.4.3"
 itertools = "0.10.5"
+superslice = "1"
