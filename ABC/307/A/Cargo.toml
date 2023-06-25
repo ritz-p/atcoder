@@ -1,9 +1,9 @@
 [package]
-name = "307_a"
+name = "a_307"
 version = "0.1.0"
 authors = ["root"]
 edition = "2018"
 
 [dependencies]
-proconio = "0.3.8"
+proconio = "0.4.3"
 itertools = "0.10.5"

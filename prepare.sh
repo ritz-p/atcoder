@@ -11,13 +11,13 @@ do
     touch ABC/$1/$abc/Cargo.toml
     touch ABC/$1/$abc/src/main.rs
     echo "[package]
-name = \"$1_${abc,}\"
+name = \"${abc,}_$1\"
 version = \"0.1.0\"
 authors = [\"root\"]
 edition = \"2018\"
 
 [dependencies]
-proconio = \"0.4.3\"
+proconio = \"0.4.5\"
 itertools = \"0.10.5\"" > ABC/$1/$abc/Cargo.toml
     echo "use proconio::input;
 

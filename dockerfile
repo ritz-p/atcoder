@@ -1,4 +1,4 @@
-FROM rust:1.42.0
+FROM rust:1.70.0
 
 RUN apt update && \
     apt install vim -y
