@@ -8,32 +8,28 @@ fn main(){
         mut b: [usize;m]
     };
 
-    a.sort();
-    b.sort();
+    let mut wa = 0;
+    let mut ac = 1001001001;
 
-    let mut i = 0;
-    let mut j = 0;
-    loop{
-        if a[i] <= b[j]{
-            if (i+1) >= (m-j){
-                println!("{}",a[i]);
-                return;
+    while wa+1<ac{
+        let wj = (wa + ac)/2;
+        let mut na = 0;
+        let mut nb = 0;
+        for i in 0..n{
+            if a[i] <= wj{
+                na += 1;
             }
-            if i == n-1{
-                println!("{}",b[m-1]+1);
-                return;
+        }
+        for i in 0..m{
+            if b[i] >= wj{
+                nb += 1;
             }
-            i += 1;
+        }
+        if na >= nb{
+            ac = wj;
         }else{
-            if (i+1) >= (m-j){
-                println!("{}",b[j] + 1);
-                return;
-            }
-            if j == m-1{
-                println!("{}",a[i]);
-                return;
-            }
-            j += 1;
+            wa = wj;
         }
     }
+    println!("{}",ac);
 }
