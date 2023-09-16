@@ -1,0 +1,9 @@
+[package]
+name = "a_320"
+version = "0.1.0"
+authors = ["root"]
+edition = "2018"
+
+[dependencies]
+proconio = "0.4.5"
+itertools = "0.10.5"
