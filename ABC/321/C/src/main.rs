@@ -12,6 +12,7 @@ fn main() {
 
         for j in (0..10).rev() {
             if bits >> j & 1 == 1 {
+                println!("{}",bits >> j);
                 num = num * 10 + j;
             }
         }
