@@ -25,7 +25,9 @@ fn main() {
 fn check(n:usize,l:usize,k:usize,a:&Vec<usize>,x: usize) -> bool{
     let mut num = 0;
     let mut pre = 0;
-    for i in 0..n{
+    for i in 0..n{-
+
+        
         if a[i] - pre >= x{
             num += 1;
             pre = a[i];
