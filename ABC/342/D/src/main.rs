@@ -1,29 +1,23 @@
 use proconio::input;
-use std::collections::HashSet;
 fn main(){
     input!{
         n: usize,
         a: [usize;n]
     };
-    let mut hash = HashSet::new();
-    for i in 0..100000{
-        hash.insert(i*i);
-    }
     let mut res = 0;
-    for i in 0..n-1{
-        for j in i..n{
-            if i == j{
-                continue;
+    let mut c = vec![0;200001];
+    for x in a{
+        let mut y = x;
+        let mut i = 2;
+        while i * i <= y{
+            while y % (i * i) == 0{
+                y /= i * i;
             }
-            if i == 0 || j == 0{
-                res += 1;
-                continue;
-            }
-            let calc = a[i] * a[j];
-            if hash.contains(&calc){
-                res += 1;
-            }
+            i += 1;
         }
+        res += c[y];
+        c[y] += 1;
     }
+    res += c[0] * (n - c[0]);
     println!("{}",res);
 }
