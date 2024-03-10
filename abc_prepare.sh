@@ -27,3 +27,8 @@ fn main(){
     };
 }" > ABC/$1/$abc/src/main.rs
 done
+
+echo "[workspace]
+members = [
+    \"ABC/$1/*\"
+]" > Cargo.toml;
