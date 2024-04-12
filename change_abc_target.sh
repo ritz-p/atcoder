@@ -5,5 +5,6 @@ fi
 
 echo "[workspace]
 members = [
-    \"ABC/$1/*\"
+    \"ABC/$1/*\",
+    \"ironclad_rule\"
 ]" > Cargo.toml;

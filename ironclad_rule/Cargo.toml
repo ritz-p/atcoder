@@ -1,0 +1,58 @@
+[package]
+name = "ironclad_rule"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+proconio = "0.4.5"
+itertools = "0.10.5"
+
+[[bin]]
+name = "a01"
+path = "src/a01.rs"
+
+[[bin]]
+name = "a02"
+path = "src/a02.rs"
+
+[[bin]]
+name = "a16"
+path = "src/a16.rs"
+
+[[bin]]
+name = "a17"
+path = "src/a17.rs"
+
+[[bin]]
+name = "a18"
+path = "src/a18.rs"
+
+[[bin]]
+name = "a19"
+path = "src/a19.rs"
+
+[[bin]]
+name = "b01"
+path = "src/b01.rs"
+
+[[bin]]
+name = "b02"
+path = "src/b02.rs"
+
+[[bin]]
+name = "b16"
+path = "src/b16.rs"
+
+[[bin]]
+name = "b17"
+path = "src/b17.rs"
+
+[[bin]]
+name = "b18"
+path = "src/b18.rs"
+
+[[bin]]
+name = "b19"
+path = "src/b19.rs"

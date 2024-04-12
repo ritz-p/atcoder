@@ -1,4 +1,5 @@
 [workspace]
 members = [
-    "ABC/348/*"
+    "ABC/348/*",
+    "ironclad_rule"
 ]
