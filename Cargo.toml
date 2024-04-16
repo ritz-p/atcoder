@@ -3,3 +3,4 @@ members = [
     "ABC/349/*",
     "ironclad_rule"
 ]
+workspace.resolver = "2"
