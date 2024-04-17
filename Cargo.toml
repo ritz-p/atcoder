@@ -1,6 +1,5 @@
 [workspace]
 members = [
-    "ABC/349/*",
+    "ADT/medium_20240417_3/*",
     "ironclad_rule"
 ]
-workspace.resolver = "2"
