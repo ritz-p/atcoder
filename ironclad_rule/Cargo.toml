@@ -50,6 +50,14 @@ name = "a19"
 path = "src/a19.rs"
 
 [[bin]]
+name = "a20"
+path = "src/a20.rs"
+
+[[bin]]
+name = "a21"
+path = "src/a21.rs"
+
+[[bin]]
 name = "b01"
 path = "src/b01.rs"
 
@@ -80,3 +88,7 @@ path = "src/b18.rs"
 [[bin]]
 name = "b19"
 path = "src/b19.rs"
+
+[[bin]]
+name = "b20"
+path = "src/b20.rs"
