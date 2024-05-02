@@ -20,15 +20,13 @@ fn main() {
  
     for v in 0..n {
         if !visited[v] {
-            // 最初に1と繋がるところを訪れたことにする
             dfs(v, &graph, &mut visited);
             ans += 1;
         }
     }
- 
     println!("{}", ans);
 }
- 
+
 fn dfs(v: usize, graph: &Vec<Vec<usize>>, visited: &mut Vec<bool>) {
     visited[v] = true;
  

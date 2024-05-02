@@ -1,57 +1,51 @@
 use proconio::input;
-use std::collections::HashSet;
-
 fn main(){
     input!{
         n: usize,
         arr: [usize;n]
     };
-    let mut graph:Vec<HashSet<usize>> = vec![HashSet::new();n+1];
+    let mut graph:Vec<Vec<usize>> = vec![vec![];n+1];
     let mut closed = false;
-    for i in 0..n{
-        graph[i+1].insert(arr[i]);
-    }
-    // println!("{:?}",graph);
-    let mut start_at = 1;
     for i in 1..n{
-        let mut visited = vec![false;n+1];
-        dfs(&graph,&mut visited,&i,&mut closed,&mut start_at);
-        // println!("{:?}",visited);
+        graph[i+1].push(arr[i]);
+    }
+    let mut visited = vec![false;n+1];
+    for i in 0..n{
+        let mut res = vec![];
+        if !visited[i]{
+            dfs(&graph,&mut visited,&i,&mut closed,&i,&mut res);
+        }
         if closed{
-            let mut visited = vec![false;n+1];
-            let mut garbage = 0;
-            let mut count = 0;
-            dfs(&graph,&mut visited,&mut start_at,&mut closed,&mut garbage);
-            for i in 1..visited.len(){
-                if visited[i]{
-                    count += 1;
-                }
-            }
-            println!("{}",count);
-            for _ in 0..count{
-                print!("{} ",start_at);
-                for g in &graph[start_at]{
-                    start_at = *g;
-                }
-            }
             return
         }
     }
 }
 
 
-fn dfs(graph: &Vec<HashSet<usize>>,visited:&mut Vec<bool>,index: &usize,closed:&mut bool,start_at:&mut usize){
-    if graph[*index].len() == 0{
-        return
-    }
+fn dfs(graph: &Vec<Vec<usize>>,visited:&mut Vec<bool>,index: &usize,closed:&mut bool,start: &usize,res: &mut Vec<usize>){
     if visited[*index]{
-        *closed = true;
-        *start_at = *index;
         return;
     }
     visited[*index] = true;
-    for g in &graph[*index]{
-        dfs(graph,visited,&g,closed,start_at);
+    for i in &graph[*index]{
+        if i == start{
+            *closed = true;
+            let mut current = start;
+            res.push(*current);
+            loop{
+                if current == index{
+                    break;
+                }
+                res.push(graph[*current][0]);
+                current = &graph[*current][0];
+            }
+            println!("{}",res.len());
+            for i in res{
+                println!("{} ",i);
+            }
+            return;
+        }
+        dfs(graph,visited,&i,closed,start,res);
     }
 }
 
