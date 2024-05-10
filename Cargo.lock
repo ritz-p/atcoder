@@ -3,7 +3,7 @@
 version = 3
 
 [[package]]
-name = "a_311"
+name = "a_352"
 version = "0.1.0"
 dependencies = [
  "itertools",
@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "b_311"
+name = "b_352"
 version = "0.1.0"
 dependencies = [
  "itertools",
@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "c_311"
+name = "c_352"
 version = "0.1.0"
 dependencies = [
  "itertools",
@@ -27,7 +27,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "d_311"
+name = "d_352"
 version = "0.1.0"
 dependencies = [
  "itertools",
@@ -35,7 +35,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "e_311"
+name = "e_352"
 version = "0.1.0"
 dependencies = [
  "itertools",
@@ -49,7 +49,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "11157ac094ffbdde99aa67b23417ebdd801842852b500e395a45a9c0aac03e4a"
 
 [[package]]
-name = "ex_311"
+name = "ex_352"
 version = "0.1.0"
 dependencies = [
  "itertools",
@@ -57,7 +57,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "f_311"
+name = "f_352"
 version = "0.1.0"
 dependencies = [
  "itertools",
@@ -65,7 +65,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "g_311"
+name = "g_352"
 version = "0.1.0"
 dependencies = [
  "itertools",
