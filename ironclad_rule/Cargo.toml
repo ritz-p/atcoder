@@ -70,6 +70,10 @@ name = "a63"
 path = "src/a63.rs"
 
 [[bin]]
+name = "a64"
+path = "src/a64.rs"
+
+[[bin]]
 name = "b01"
 path = "src/b01.rs"
 
@@ -116,3 +120,11 @@ path = "src/b61.rs"
 [[bin]]
 name = "b62"
 path = "src/b62.rs"
+
+[[bin]]
+name = "b63"
+path = "src/b63.rs"
+
+[[bin]]
+name = "b64"
+path = "src/b64.rs"
