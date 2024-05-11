@@ -58,6 +58,26 @@ name = "a21"
 path = "src/a21.rs"
 
 [[bin]]
+name = "a51"
+path = "src/a51.rs"
+
+[[bin]]
+name = "a52"
+path = "src/a52.rs"
+
+[[bin]]
+name = "a53"
+path = "src/a53.rs"
+
+[[bin]]
+name = "a54"
+path = "src/a54.rs"
+
+[[bin]]
+name = "a55"
+path = "src/a55.rs"
+
+[[bin]]
 name = "a61"
 path = "src/a61.rs"
 
@@ -112,6 +132,26 @@ path = "src/b19.rs"
 [[bin]]
 name = "b20"
 path = "src/b20.rs"
+
+[[bin]]
+name = "b39"
+path = "src/b39.rs"
+
+[[bin]]
+name = "b51"
+path = "src/b51.rs"
+
+[[bin]]
+name = "b52"
+path = "src/b52.rs"
+
+[[bin]]
+name = "b54"
+path = "src/b54.rs"
+
+[[bin]]
+name = "b55"
+path = "src/b55.rs"
 
 [[bin]]
 name = "b61"
