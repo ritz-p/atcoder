@@ -1,26 +1,28 @@
 use proconio::input;
-
-const N: usize = 100_000_000;
-
+use std::collections::BTreeSet;
 fn main() {
     input! {
         n: usize,
         mut a: [usize; n],
     }
     a.sort();
-    let mut v = vec![0; n + 1];
-    for (i, &x) in a.iter().enumerate() {
-        v[i + 1] = v[i] + x;
-    }
     let mut res = 0;
-    for (i, &x) in a.iter().enumerate() {
-        res += v[n] - v[i + 1] + (n - i - 1) * x;
-        let j = a.partition_point(|&y| x + y < N);
-        if j <= i {
-            res -= (n - i - 1) * N;
-        } else {
-            res -= (n - j) * N;
-        }
+    let m = 100000000;
+    let mut bset = BTreeSet::new();
+    for i in 0..n{
+        res += a[i] * (n-1);
+        bset.insert((a[i],i));
     }
+    for i in 0..n-1{
+        let mut point = bset.range((m-a[i],0)..);
+        let mut c = n-i-1;
+        if let Some(value) = point.next(){
+            c = c.min(n-value.1);
+        }else{
+            c = 0;
+        }
+        res -= m * c;
+    }
+
     println!("{}",res);
 }
