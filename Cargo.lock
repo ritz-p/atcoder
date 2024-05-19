@@ -3,39 +3,7 @@
 version = 3
 
 [[package]]
-name = "a_354"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "proconio",
-]
-
-[[package]]
-name = "b_354"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "proconio",
-]
-
-[[package]]
-name = "c_354"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "proconio",
-]
-
-[[package]]
-name = "d_354"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "proconio",
-]
-
-[[package]]
-name = "e_354"
+name = "abc_355"
 version = "0.1.0"
 dependencies = [
  "itertools",
@@ -47,30 +15,6 @@ name = "either"
 version = "1.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "11157ac094ffbdde99aa67b23417ebdd801842852b500e395a45a9c0aac03e4a"
-
-[[package]]
-name = "ex_354"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "proconio",
-]
-
-[[package]]
-name = "f_354"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "proconio",
-]
-
-[[package]]
-name = "g_354"
-version = "0.1.0"
-dependencies = [
- "itertools",
- "proconio",
-]
 
 [[package]]
 name = "ironclad_rule"

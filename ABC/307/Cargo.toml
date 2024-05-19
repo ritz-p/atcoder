@@ -1,0 +1,41 @@
+[package]
+name = "abc_307"
+version = "0.1.0"
+authors = ["root"]
+edition = "2018"
+
+[dependencies]
+proconio = "0.4.5"
+itertools = "0.10.5"
+
+[[bin]]
+name = "a"
+path = "src/a.rs"
+
+[[bin]]
+name = "b"
+path = "src/b.rs"
+
+[[bin]]
+name = "c"
+path = "src/c.rs"
+
+[[bin]]
+name = "d"
+path = "src/d.rs"
+
+[[bin]]
+name = "e"
+path = "src/e.rs"
+
+[[bin]]
+name = "f"
+path = "src/f.rs"
+
+[[bin]]
+name = "g"
+path = "src/g.rs"
+
+[[bin]]
+name = "ex"
+path = "src/ex.rs"
