@@ -1,66 +1,33 @@
 use proconio::input;
-
-fn dfs(map: &Vec<Vec<usize>>, mut visited: Vec<bool>, mut searched: Vec<bool>, mut ans: usize, key: usize) -> (usize, Vec<bool>, Vec<bool>) {
-    if visited[key] {
-        return (ans, visited, searched);
-    }
-
-    visited[key] = true;
-    searched[key] = true;
-
-    for &k in map[key].iter() {
-
-        if searched[k] {
-            continue;
-        }
-
-        if visited[k] {
-            ans += 1;
-            continue;
-        }
-
-        let (a, v, s) = dfs(map, visited, searched, ans, k);
-        ans = a;
-        visited = v;
-        searched = s;
-    }
-
-    searched[key] = false;
-    (ans, visited, searched)
-}
-
+use std::collections::VecDeque;
 fn main() {
-    input!{
+    input! {
         n: usize,
         m: usize,
+        edges: [(usize, usize); m],
     };
-
-    let mut visited = vec![false; n];
-    let mut searched = vec![false; n];
-    let mut map: Vec<Vec<usize>> = vec![vec![]; n];
-
-    for _ in 0..m {
-        input!{
-            a: usize,
-            b: usize,
-        };
-
-        let a = a-1;
-        let b = b-1;
-
-        map[a].push(b);
-        map[b].push(a);
+    let mut graph = vec![vec![];n];
+    for (a,b) in edges{
+        graph[a-1].push(b-1);
+        graph[b-1].push(a-1);
     }
-
-    let mut ans = 0;
-    for i in 0..n {
-        if !visited[i] {
-            let (a, v, s) = dfs(&map, visited, searched, ans, i);
-            ans = a;
-            visited = v;
-            searched = s;
+    let mut s = 0;
+    let mut visited = vec![false;n];
+    for i in 0..n{
+        if !visited[i]{
+            s += 1;
+            let mut que = VecDeque::new();
+            que.push_back(i);
+            while !que.is_empty(){
+                let q = que.pop_front().unwrap();
+                for g in &graph[q]{
+                    if !visited[*g]{
+                        visited[*g] = true;
+                        que.push_back(*g);
+                    }
+                }
+            }
         }
     }
-
-    println!("{}", ans);
+    println!("{}",m - n + s);
 }
