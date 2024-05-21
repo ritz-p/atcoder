@@ -7,22 +7,36 @@ fn main(){
     let mut res = 0;
     a.sort();
     let mut p = 0;
-    for (index,e) in a.iter().enumerate(){
-        if *e >= 0{
-            p = index;
+    let mut m = 0;
+    let mut z = 0;
+    for v in &a{
+        if v > &0{
+            p += 1;
+        }else if v == &0{
+            z += 0;
+        }else{
+            m += 1;
+        }
+    }
+    for (index,v) in a.iter().rev().enumerate(){
+        if p == 0{
+            break;
+        }
+        res += v * (p - index - 1 + m + z) as isize;
+        res -= v * index as isize;
+        if index == p-1{
             break;
         }
     }
-    println!("{}",p);
-    for (index,v) in a.iter().rev().enumerate(){
-        if v < &0{
-            res += v.abs() * (n - 1 - index) as isize;
-            res -= v.abs() * (n - p) as isize;
-        }else{
-            res += v.abs() * (n - 1 - index) as isize;
-            res -= v.abs() * p as isize;
+    for (index,v) in a.iter().enumerate(){
+        if m == 0{
+            break;
         }
-        println!("{} {} {}",res,index,v);
+        res += v * (m - index - 1 + p + z) as isize * -1;
+        res -= v * index as isize * -1;
+        if index == m-1{
+            break;
+        }
     }
     println!("{}",res);
 }
