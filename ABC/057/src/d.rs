@@ -1,47 +1,39 @@
-use proconio::input;
+use proconio::*;
 use std::collections::BTreeMap;
-// TODO: solve
-fn main(){
-    input!{
-        n: usize,
-        a: usize,
-        b: usize,
-        v: [usize;n]
-    };
-    let mut bmap = BTreeMap::new();
-    for value in v{
-        *bmap.entry(value).or_insert(0) += 1;
+
+fn main() {
+    input! { n: usize, a: usize, b: usize, mut v: [usize; n] }
+    v.sort_by_key(|&x| std::cmp::Reverse(x));
+    let mut map = BTreeMap::new();
+    for &v in &v {
+        *map.entry(v).or_insert(0) += 1;
     }
-    let mut c = 0;
-    let mut res = 0.0;
-    println!("{:?}",bmap);
-    for i in a..=b{
-        let mut count = 0;
-        let mut sum = 0.0;
-        for (key,value) in bmap.iter().rev(){
-            count += value;
-            println!("{} {}",key,count);
-            if count == i{
-                sum += (key * value) as f64;
-                if res < sum / i as f64{
-                    res = sum / i as f64;
-                    c = 1;
-                }
-                break;
-            }else if count > i{
-                sum += (key * (count - i)) as f64;
-                if res == sum / i as f64{
-                    c = c.max(count - i);
-                }else if res < sum / i as f64{
-                    res = sum / i as f64;
-                    c = count - i;
-                }
-                break;
-            }else if count < i{
-                sum += (key * value) as f64;
-            }
+    println!("{:.6}", v[..a].iter().sum::<usize>() as f64 / a as f64);
+    let c = *map.get(&v[0]).unwrap();
+    if c >= a {
+        let mut ans = 0;
+        for i in a..=b.min(c) {
+            ans += comb(c, i);
         }
+        println!("{ans}");
+    } else {
+        let mut cnt = 0;
+        for i in 1.. {
+            if v[a - i] != v[a - 1] {
+                break;
+            }
+            cnt += 1;
+        }
+        let c = *map.get(&(v[a - 1])).unwrap();
+        println!("{}", comb(c, cnt));
     }
-    println!("{}",res);
-    println!("{}",c);
+}
+
+//ncr
+fn comb(n: usize, r: usize) -> usize {
+    assert!(n >= r);
+    if r == 0 || n == r {
+        return 1;
+    }
+    return comb(n - 1, r) * n / (n - r);
 }
