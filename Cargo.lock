@@ -3,7 +3,7 @@
 version = 3
 
 [[package]]
-name = "abc_106"
+name = "abc_252"
 version = "0.1.0"
 dependencies = [
  "itertools",
