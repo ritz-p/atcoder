@@ -114,6 +114,18 @@ name = "a66"
 path = "src/a66.rs"
 
 [[bin]]
+name = "a67"
+path = "src/a67.rs"
+
+[[bin]]
+name = "a68"
+path = "src/a68.rs"
+
+[[bin]]
+name = "a70"
+path = "src/a70.rs"
+
+[[bin]]
 name = "b01"
 path = "src/b01.rs"
 
@@ -200,3 +212,7 @@ path = "src/b64.rs"
 [[bin]]
 name = "b65"
 path = "src/b65.rs"
+
+[[bin]]
+name = "b67"
+path = "src/b67.rs"
