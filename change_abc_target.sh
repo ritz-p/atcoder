@@ -7,4 +7,6 @@ echo "[workspace]
 members = [
     \"ABC/$1\",
     \"ironclad_rule\"
-]" > Cargo.toml;
+]
+
+resolver = \"2\"" > Cargo.toml;

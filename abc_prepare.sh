@@ -14,7 +14,7 @@ edition = \"2018\"
 [dependencies]
 proconio = \"0.4.5\"
 itertools = \"0.10.5\"
-ac_library = \"0.1.1\"" > ABC/$1/Cargo.toml
+ac-library-rs = \"0.1.1\"" > ABC/$1/Cargo.toml
 
 alphabet=(A B C D E F G Ex)
 for abc in ${alphabet[@]}; do

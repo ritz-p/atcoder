@@ -1,21 +1,21 @@
 use std::collections::HashSet;
 
 use ac_library::SccGraph;
-use proconio::{input, marker::Usize1};
+use proconio::input;
 
 fn main() {
     input! {
         n: usize,
-        a: [Usize1; n],
+        a: [usize;n],
     }
 
     let mut graph = SccGraph::new(n);
-    for (i, &j) in a.iter().enumerate() {
-        graph.add_edge(i, j);
+    for (index, &j) in a.iter().enumerate() {
+        graph.add_edge(index, j-1);
     }
     let scc = graph.scc();
 
-    let mut counts = vec![0usize; n];
+    let mut counts = vec![0usize;n];
     for v in scc.iter().rev() {
         let mut set = HashSet::new();
         for x in v {

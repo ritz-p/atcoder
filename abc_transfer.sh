@@ -10,7 +10,8 @@ edition = \"2018\"
 
 [dependencies]
 proconio = \"0.4.5\"
-itertools = \"0.10.5\"" > ABC/$dir/Cargo.toml
+itertools = \"0.10.5\"
+ac-library-rs = \"0.1.1\"" > ABC/$dir/Cargo.toml
 
     for abc in ${alphabet[@]}; do
         lower_case=$(echo $abc | tr 'A-Z' 'a-z')

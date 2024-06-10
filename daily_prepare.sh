@@ -18,7 +18,8 @@ edition = \"2018\"
 
 [dependencies]
 proconio = \"0.4.5\"
-itertools = \"0.10.5\"" > ADT/$1/$abc/Cargo.toml
+itertools = \"0.10.5\"
+ac-library-rs = \"0.1.1\"" > ADT/$1/$abc/Cargo.toml
     echo "use proconio::input;
 
 fn main(){
