@@ -98,6 +98,26 @@ name = "a33"
 path = "src/a33.rs"
 
 [[bin]]
+name = "a34"
+path = "src/a34.rs"
+
+[[bin]]
+name = "a35"
+path = "src/a35.rs"
+
+[[bin]]
+name = "a36"
+path = "src/a36.rs"
+
+[[bin]]
+name = "a37"
+path = "src/a37.rs"
+
+[[bin]]
+name = "a38"
+path = "src/a38.rs"
+
+[[bin]]
 name = "a51"
 path = "src/a51.rs"
 
@@ -232,6 +252,22 @@ path = "src/b32.rs"
 [[bin]]
 name = "b33"
 path = "src/b33.rs"
+
+[[bin]]
+name = "b34"
+path = "src/b34.rs"
+
+[[bin]]
+name = "b36"
+path = "src/b36.rs"
+
+[[bin]]
+name = "b37"
+path = "src/b37.rs"
+
+[[bin]]
+name = "b38"
+path = "src/b38.rs"
 
 [[bin]]
 name = "b39"
