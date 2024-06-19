@@ -118,6 +118,14 @@ name = "a38"
 path = "src/a38.rs"
 
 [[bin]]
+name = "a39"
+path = "src/a39.rs"
+
+[[bin]]
+name = "a40"
+path = "src/a40.rs"
+
+[[bin]]
 name = "a51"
 path = "src/a51.rs"
 

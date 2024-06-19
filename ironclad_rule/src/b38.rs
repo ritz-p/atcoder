@@ -7,24 +7,33 @@ fn main(){
     };
     let mut g = vec![0;n];
     g[0] = 1;
+    let mut current = 1;
+
     for (index,c) in s.chars().enumerate(){
         match c{
             'A' => {
-                g[index+1] = g[index] + 1;
+                current += 1;
             },
             'B' => {
-                let mut bc = 1;
-                let mut current = index+1;
-                while s.chars().nth(current).unwrap() == 'B'{
-                    bc += 1;
-                    current += 1;
-                }
-                g[index+1] = (g[index] - 1).max(bc);
+                current = 1;
             },
             _ => {}
         }
+        g[index + 1] = current;
+    }
+    current = 1;
+    for index in (0..n-1).rev(){
+        match s.chars().nth(index){
+            Some('A') => {
+                current = 1;
+            },
+            Some('B') => {
+                current += 1;
+            },
+            _ => {}
+        }
+        g[index] = g[index].max(current);
     }
     let res:usize = g.iter().sum();
-    println!("{:?}",g);
     println!("{}",res);
 }
