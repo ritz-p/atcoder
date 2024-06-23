@@ -7,5 +7,3 @@ services:
     tty: true
     volumes:
       - .:/workspace
-    ports:
-      - 7777:7777
