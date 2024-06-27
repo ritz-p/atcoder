@@ -126,6 +126,14 @@ name = "a40"
 path = "src/a40.rs"
 
 [[bin]]
+name = "a41"
+path = "src/a41.rs"
+
+[[bin]]
+name = "a42"
+path = "src/a42.rs"
+
+[[bin]]
 name = "a51"
 path = "src/a51.rs"
 
@@ -280,6 +288,18 @@ path = "src/b38.rs"
 [[bin]]
 name = "b39"
 path = "src/b39.rs"
+
+[[bin]]
+name = "b40"
+path = "src/b40.rs"
+
+[[bin]]
+name = "b41"
+path = "src/b41.rs"
+
+[[bin]]
+name = "b42"
+path = "src/b42.rs"
 
 [[bin]]
 name = "b51"
