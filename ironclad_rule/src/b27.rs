@@ -9,7 +9,7 @@ fn main() {
     println!("{}", lcm(a, b));
 }
 
-fn gcd(mut a:usize,mut b:usize) -> usize{
+fn gcd(mut a: usize, mut b: usize) -> usize {
     while b != 0 {
         let temp = b;
         b = a % b;
