@@ -1,8 +1,8 @@
 use proconio::input;
 
-fn main(){
-    input!{
+fn main() {
+    input! {
         n: usize
     };
-    println!("{}",n*n);
+    println!("{}", n * n);
 }
