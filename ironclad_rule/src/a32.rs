@@ -1,24 +1,24 @@
 use proconio::input;
 
-fn main(){
+fn main() {
     input! {
         n: usize,
         a: usize,
         b: usize,
     };
-    let mut dp = vec![false;n+1];
-    for i in 0..=n{
-        if i >= a && !dp[i-a]{
+    let mut dp = vec![false; n + 1];
+    for i in 0..=n {
+        if i >= a && !dp[i - a] {
             dp[i] = true;
-        }else if i >= b && !dp[i-b]{
+        } else if i >= b && !dp[i - b] {
             dp[i] = true;
-        }else{
+        } else {
             dp[i] = false;
         }
     }
-    if dp[n]{
+    if dp[n] {
         println!("First");
-    }else{
+    } else {
         println!("Second");
     }
 }
