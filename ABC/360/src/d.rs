@@ -22,14 +22,14 @@ pub fn main() {
     left.sort();
     right.sort();
 
-    let mut ans = 0;
+    let mut res = 0;
     for &pos in &right {
         let max_pos = pos + 2 * t;
         let lower_bound = left.binary_search(&pos).unwrap_or_else(|x| x);
         let upper_bound = left.binary_search(&(max_pos + 1)).unwrap_or_else(|x| x);
 
-        ans += (upper_bound - lower_bound) as i64;
+        res += (upper_bound - lower_bound) as i64;
     }
 
-    println!("{}", ans);
+    println!("{}", res);
 }
