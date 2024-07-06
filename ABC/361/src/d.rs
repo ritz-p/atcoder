@@ -1,10 +1,12 @@
 use proconio::input;
 use proconio::marker::Chars;
+use std::collections::{HashMap, VecDeque};
+
 fn main() {
     input! {
         n: usize,
-        s: Chars,
-        t: Chars,
+        mut s: Chars,
+        mut t: Chars,
     }
     let sb_count = s.iter().filter(|c|**c == 'B').count();
     let sw_count = s.iter().filter(|c| **c == 'W').count();
@@ -15,13 +17,36 @@ fn main() {
         println!("-1");
         return;
     }
+    let mut map = HashMap::new();
+    let mut queue = VecDeque::new();
+    s.push('.');
+    s.push('.');
+    t.push('.');
+    t.push('.');
 
-    let mut count = 0;
-    for i in 0..n{
-        if s[i] != t[i]{
-            count += 1;
+    queue.push_back(s.clone());
+    map.insert(s.clone(),0);
+    while let Some(cs) = queue.pop_front(){
+        for i in 0..n+1{
+            let count = map[&cs];
+            let empty = cs.iter().position(|c| *c == '.').unwrap();
+            if cs[i] == '.' || cs[i+1] == '.'{
+                continue;
+            }
+            let mut new = cs.clone();
+            new.swap(empty,i);
+            new.swap(empty+1,i+1);
+
+            if map.contains_key(&new){
+                continue;
+            }
+            map.insert(new.clone(), count + 1);
+            queue.push_back(new);
         }
     }
-
-    println!("{}",count+1);
+    if let Some(res) = map.get(&t){
+        println!("{}",res);
+    }else{
+        println!("-1");
+    }
 }
