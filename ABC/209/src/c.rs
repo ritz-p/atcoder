@@ -7,9 +7,9 @@ fn main() {
     };
     let mut res = 1;
     c.sort();
-    for i in 0..n{
+    for i in 0..n {
         res = res * (c[i] - i).max(0) % 1000000007;
     }
 
-    println!("{}",res);
+    println!("{}", res);
 }
