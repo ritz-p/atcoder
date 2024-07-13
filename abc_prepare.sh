@@ -40,3 +40,4 @@ members = [
     \"ABC/$1\",
     \"ironclad_rule\"
 ]" > Cargo.toml;
+cargo fmt
