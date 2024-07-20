@@ -1,20 +1,19 @@
 use itertools::Itertools;
-use std::collections::HashSet;
 use proconio::input;
-
+use std::collections::HashSet;
 
 fn main() {
-    input!{
+    input! {
         _n: usize,
         k: usize,
         s: String
     };
     let mut set = HashSet::new();
-    for perm in s.chars().permutations(s.len()){
+    for perm in s.chars().permutations(s.len()) {
         let ps: String = perm.iter().collect();
         set.insert(ps);
     }
-    let res = set.into_iter().filter(|p| sub(p,k)).count();
+    let res = set.into_iter().filter(|p| sub(p, k)).count();
     println!("{}", res);
 }
 
