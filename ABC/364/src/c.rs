@@ -12,20 +12,20 @@ fn main() {
     b.sort();
     let mut ac = 0;
     let mut count = n;
-    for (index,e) in a.iter().rev().enumerate(){
+    for (index, e) in a.iter().rev().enumerate() {
         ac += e;
-        if ac > x{
-            count = count.min(index+1);
+        if ac > x {
+            count = count.min(index + 1);
             break;
         }
     }
     let mut bc = 0;
-    for (index,e) in b.iter().rev().enumerate(){
+    for (index, e) in b.iter().rev().enumerate() {
         bc += e;
-        if bc > y{
-            count = count.min(index+1);
+        if bc > y {
+            count = count.min(index + 1);
             break;
         }
     }
-    println!("{}",count);
+    println!("{}", count);
 }
