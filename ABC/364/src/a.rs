@@ -5,23 +5,23 @@ fn main() {
         n: usize,
         ss: [String;n]
     };
-    if n == 1{
+    if n == 1 {
         println!("Yes");
         return;
     }
     let mut b = true;
-    for i in 1..n{
-        if i == n-1{
+    for i in 1..n {
+        if i == n - 1 {
             break;
         }
-        if ss[i-1] == "sweet" && ss[i] == "sweet"{
+        if ss[i - 1] == "sweet" && ss[i] == "sweet" {
             b = false;
             break;
         }
     }
-    if b{
+    if b {
         println!("Yes");
-    }else{
+    } else {
         println!("No");
     }
 }
