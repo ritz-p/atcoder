@@ -7,29 +7,29 @@ fn main() {
         c: [Chars;h]
     };
 
-    let mut dp = vec![vec![0;w];h];
+    let mut dp = vec![vec![0; w]; h];
     dp[0][0] = 1;
     let mut res = 1;
 
-    for i in 0..h{
-        for j in 0..w{
-            if c[i][j] == '#'{
+    for i in 0..h {
+        for j in 0..w {
+            if c[i][j] == '#' {
                 continue;
             }
-            if dp[i][j] == 0{
+            if dp[i][j] == 0 {
                 continue;
             }
-            if i < h - 1 && c[i+1][j] == '.'{
-                dp[i+1][j] = dp[i+1][j].max(dp[i][j]+1);
+            if i < h - 1 && c[i + 1][j] == '.' {
+                dp[i + 1][j] = dp[i + 1][j].max(dp[i][j] + 1);
             }
-            if j < w - 1 && c[i][j+1] == '.'{
-                dp[i][j+1] = dp[i][j+1].max(dp[i][j]+1);
+            if j < w - 1 && c[i][j + 1] == '.' {
+                dp[i][j + 1] = dp[i][j + 1].max(dp[i][j] + 1);
             }
         }
     }
 
-    for i in 0..h{
-        for j in 0..w{
+    for i in 0..h {
+        for j in 0..w {
             res = res.max(dp[i][j]);
         }
     }
