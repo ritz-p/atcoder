@@ -11,13 +11,13 @@ fn main() {
     };
 
     let mut set = HashSet::new();
-    for st in t{
+    for st in t {
         set.insert(st);
     }
-    for ss in s{
-        if set.contains(&ss){
+    for ss in s {
+        if set.contains(&ss) {
             println!("Yes");
-        }else{
+        } else {
             println!("No");
         }
     }
