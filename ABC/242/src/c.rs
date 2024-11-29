@@ -1,28 +1,26 @@
 use proconio::input;
 
-const MOD: i64 = 998244353;
+const MOD: usize = 998244353;
 
 fn main() {
     input! {
         n: usize
     };
-
-    let res = (0..(n - 1))
-        .fold([1, 1, 1, 1, 1, 1, 1, 1, 1], |acc, _| {
-            let mut next = acc.clone();
-            for i in 0..9 {
-                if i > 0 {
-                    next[i] += acc[i - 1];
-                }
-                if i < 8 {
-                    next[i] += acc[i + 1];
-                }
-                next[i] %= MOD;
+    let mut dp = vec![vec![0, 0, 0, 0, 0, 0, 0, 0, 0]; n];
+    dp[0] = vec![1, 1, 1, 1, 1, 1, 1, 1, 1];
+    for i in 1..n {
+        for j in 0..9 {
+            dp[i][j] += dp[i - 1][j] % MOD;
+            if j == 0 {
+                dp[i][j + 1] += dp[i - 1][j] % MOD;
+            } else if j == 8 {
+                dp[i][j - 1] += dp[i - 1][j] % MOD;
+            } else {
+                dp[i][j + 1] += dp[i - 1][j] % MOD;
+                dp[i][j - 1] += dp[i - 1][j] % MOD;
             }
-            next
-        })
-        .iter()
-        .sum::<i64>()
-        % MOD;
+        }
+    }
+    let res = dp[n - 1].iter().sum::<usize>() % MOD;
     println!("{}", res);
 }
