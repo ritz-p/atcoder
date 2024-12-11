@@ -1,50 +1,32 @@
-use proconio::input;
+use proconio::*;
 
 fn main() {
     input! {
-        n: usize,
-    };
-    let primes = primes(n);
-
-    let mut res = 0;
-    for &p in &primes {
-        if p * p * p * p * p * p * p * p > n {
-            break;
-        }
-        res += 1;
+        n: usize
     }
-    for i in 0..primes.len() {
-        let p = primes[i];
-        if p * p > n {
-            break;
+    let mut primes = vec![true; 2_000_001];
+    let mut v = vec![];
+    for i in 2..primes.len() {
+        if !primes[i] {
+            continue;
         }
-        for j in i + 1..primes.len() {
-            let q = primes[j];
-            if p * p * q > n {
+        v.push(i as usize);
+        for j in 2.. {
+            if i * j >= primes.len() {
+                break;
+            }
+            primes[i * j] = false;
+        }
+    }
+    let mut res = 0;
+    for &x in v.iter() {
+        for &y in v.iter() {
+            if x == y || x * x * y * y > n {
                 break;
             }
             res += 1;
         }
+        res += (x.saturating_pow(8) <= n) as i32;
     }
     println!("{}", res);
-}
-fn primes(limit: usize) -> Vec<usize> {
-    let mut is_prime = vec![true; limit + 1];
-    let mut primes = Vec::new();
-
-    is_prime[0] = false;
-    if limit >= 1 {
-        is_prime[1] = false;
-    }
-
-    for i in 2..=limit {
-        if is_prime[i] {
-            primes.push(i);
-            for j in (i * i..=limit).step_by(i) {
-                is_prime[j] = false;
-            }
-        }
-    }
-
-    primes
 }
