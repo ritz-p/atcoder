@@ -1,5 +1,7 @@
 [workspace]
 members = [
-    "ABC/247",
+    "ABC/215",
     "ironclad_rule"
 ]
+
+resolver = "2"
