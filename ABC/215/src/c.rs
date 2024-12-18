@@ -1,6 +1,6 @@
 use itertools::Itertools;
-use proconio::marker::Chars;
 use proconio::input;
+use proconio::marker::Chars;
 fn main() {
     input! {
         mut s: Chars,
