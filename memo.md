@@ -18,3 +18,19 @@
         i += 1;
     }
    ```
+4. 公差が 0 未満の場合初項を最低値にして足していく
+   ```rust
+   if d < 0 {
+       a = a + d * (n - 1);
+       d *= -1;
+   }
+   ```
+5. binary_search
+   ```rust
+   let s = [0, 1, 1, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55];
+   assert*eq!(s.binary_search(&13), Ok(9));
+   assert_eq!(s.binary_search(&4), Err(7));
+   assert_eq!(s.binary_search(&100), Err(13));
+   let r = s.binary_search(&1);
+   assert!(match r { Ok(1..=4) => true, * => false, });
+   ```
