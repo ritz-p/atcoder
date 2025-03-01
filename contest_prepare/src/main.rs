@@ -70,7 +70,12 @@ fn main() {
         };
         let project_path = format!("{}/{}", contest_prefix, contest_number);
         if fs::metadata(&project_path).is_ok() {
-            eprintln!("Error: Directory '{}' already exists.", project_path);
+            eprintln!(
+                "Directory '{}' already exists. Changed contest target in Cargo.toml",
+                project_path
+            );
+            change_target(&contest_prefix, &contest_number);
+            run_command(&toml_command, &vec!["format", "Cargo.toml"]);
             exit(1);
         }
 
@@ -115,28 +120,10 @@ fn main() {
             current_toml.push_str(&bin_section);
             fs::write(&cargo_toml_path, current_toml).expect("Failed to update project Cargo.toml");
         }
-        let contest_toml_format_args = vec!["format", &cargo_toml_path];
-        run_command(&toml_command, &contest_toml_format_args);
-
-        let workspace_projects = vec![
-            format!("\"{}/{}\"", contest_prefix, contest_number),
-            "\"ironclad_rule\"".to_string(),
-            "\"contest_prepare\"\n".to_string(),
-        ]
-        .iter()
-        .join(",\n");
-        let workspace_toml = vec![
-            "[workspace]".to_string(),
-            format!("members = [{}]", workspace_projects),
-            "resolver = \"2\"\n".to_string(),
-        ]
-        .iter()
-        .join("\n");
-        fs::write("Cargo.toml", workspace_toml).expect("Failed to write workspace Cargo.toml");
-        let root_toml_format_args = vec!["format", "Cargo.toml"];
-        run_command(&toml_command, &root_toml_format_args);
-        let cargo_fmt_args = vec!["fmt"];
-        run_command(&cargo_command, &cargo_fmt_args);
+        run_command(&toml_command, &vec!["format", &cargo_toml_path]);
+        change_target(contest_prefix, contest_number);
+        run_command(&toml_command, &vec!["format", "Cargo.toml"]);
+        run_command(&cargo_command, &vec!["fmt"]);
         println!(
             "Project created successfully in {}/{}",
             contest_prefix, contest_number
@@ -162,4 +149,22 @@ fn run_command(command: &str, args: &[&str]) {
             );
         }
     }
+}
+
+fn change_target(contest_prefix: &str, contest_number: &str) {
+    let workspace_projects = vec![
+        format!("\"{}/{}\"", contest_prefix, contest_number),
+        "\"ironclad_rule\"".to_string(),
+        "\"contest_prepare\"".to_string(),
+    ]
+    .iter()
+    .join(",");
+    let workspace_toml = vec![
+        "[workspace]".to_string(),
+        format!("members = [{}]", workspace_projects),
+        "resolver = \"2\"\n".to_string(),
+    ]
+    .iter()
+    .join("\n");
+    fs::write("Cargo.toml", workspace_toml).expect("Failed to write workspace Cargo.toml");
 }
