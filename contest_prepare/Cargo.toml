@@ -1,0 +1,13 @@
+[package]
+name = "contest_prepare"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "prepare"
+path = "src/main.rs"
+
+[dependencies]
+strum = "0.27"
+strum_macros = "0.27"
+itertools = "0.13.0"

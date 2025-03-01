@@ -1,0 +1,33 @@
+[package]
+name = "arc_21"
+version = "0.1.0"
+edition = "2018"
+[dependencies]
+proconio = "0.5.0"
+itertools = "0.13.0"
+ac-library-rs = "0.1.1"
+superslice = "1"
+[[bin]]
+name = "a"
+path = "src/a"
+[[bin]]
+name = "b"
+path = "src/b"
+[[bin]]
+name = "c"
+path = "src/c"
+[[bin]]
+name = "d"
+path = "src/d"
+[[bin]]
+name = "e"
+path = "src/e"
+[[bin]]
+name = "f"
+path = "src/f"
+[[bin]]
+name = "g"
+path = "src/g"
+[[bin]]
+name = "ex"
+path = "src/ex"

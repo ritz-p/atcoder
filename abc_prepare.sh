@@ -1,7 +1,28 @@
-if [ -z "${1}" ]; then
-    echo "You should set contest number"
-    exit 1
-fi
+PS3="Contest type? :"
+options=("ABC" "ARC" "AGC" "exit")
+select OPTION in "${options[@]}"; do
+    case "${OPTION}" in
+        "ABC" "ARC" "AGC")
+            read -p "Contest number? :" CONTEST_NUMBER
+
+            if [ -d "${OPTION}/${CONTEST_NUMBER}" ]; then
+                echo "Directory '${OPTION}/${CONTEST_NUMBER}' already exists."
+                exit 1
+            fi
+            ;;
+        "exit")
+            echo "exit"
+            break
+            ;;
+        *)
+            echo "Invalid choice: $REPLY"
+            ;;
+    esac
+done
+
+
+
+
 mkdir -p ABC/$1
 mkdir -p ABC/$1/src
 touch ABC/$1/Cargo.toml
@@ -41,5 +62,6 @@ echo "[workspace]
 members = [
     \"ABC/$1\",
     \"ironclad_rule\"
-]" > Cargo.toml;
+]
+resolver = \"2\"" > Cargo.toml;
 cargo fmt

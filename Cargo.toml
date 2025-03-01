@@ -1,5 +1,3 @@
 [workspace]
-members = [
-    "ABC/111",
-    "ironclad_rule"
-]
+members = ["ARC/112", "ironclad_rule", "contest_prepare"]
+resolver = "2"
