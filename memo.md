@@ -77,3 +77,28 @@
      1110 -> 4 と 3 と 2,1 で分割
      1111 -> 4 と 3 と 2 と 1 で分割
      ```
+
+## 単純無向グラフの経路の全探索について
+
+1. start から goal までの経路を探索する
+
+   ```rust
+   fn dfs(
+   start: usize,
+   goal: usize,
+   visited: &mut Vec<bool>,
+   graph: &Vec<Vec<(usize, usize)>>,
+   ) {
+   if start == goal {
+        // なんか処理
+       return;
+   }
+   for &(next, w) in &graph[start] {
+       if !visited[next] {
+           visited[next] = true;
+           dfs(next, goal, visited, graph);
+           visited[next] = false;
+       }
+   }
+   }
+   ```
