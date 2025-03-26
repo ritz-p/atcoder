@@ -1,26 +1,28 @@
+#![allow(non_snake_case)]
 use proconio::input;
 
 fn main() {
     input! {
-        k: usize,
+        mut k:usize,
     }
 
-    let mut list = vec![];
-
-    for bits in 2..(1 << 10) {
-        let mut num: i64 = 0;
-
-        for j in (0..10).rev() {
-            if bits >> j & 1 == 1 {
-                println!("{}",bits >> j);
-                num = num * 10 + j;
+    let mut v = vec![];
+    for bit in 0..1 << 10 {
+        let mut x = 0usize;
+        for d in (0..=9).rev() {
+            if (bit >> d) & 1 != 0 {
+                x *= 10;
+                x += d;
             }
         }
 
-        list.push(num);
+        if x != 0 {
+            v.push(x);
+        }
     }
 
-    list.sort();
+    v.sort();
 
-    println!("{}", list[k - 1]);
+    let res = v[k - 1];
+    println!("{}", res);
 }
