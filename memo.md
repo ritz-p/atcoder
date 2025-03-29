@@ -39,9 +39,11 @@
    }
    ```
 
-## 二部探索(binary_search について)
+## 二分探索(binary_search について)
 
-1. binary_search
+1. ソート済みの配列を想定
+2. binary_search
+
    ```rust
    let s = [0, 1, 1, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55];
    assert*eq!(s.binary_search(&13), Ok(9));
@@ -49,6 +51,20 @@
    assert_eq!(s.binary_search(&100), Err(13));
    let r = s.binary_search(&1);
    assert!(match r { Ok(1..=4) => true, * => false, });
+   ```
+
+## 二分探索(partition_point について)
+
+1. sort 済みの配列を想定
+2. 例ではある値以下の最大の値の index を返す
+3. partition_point
+
+   ```rust
+   let v = [1, 2, 3, 3, 5, 6, 7];
+   let i = v.partition_point(|&x| x < 5);
+   assert_eq!(i, 4);
+   assert!(v[..i].iter().all(|&x| x < 5));
+   assert!(v[i..].iter().all(|&x| !(x < 5)));
    ```
 
 ## ビット全探索について
