@@ -1,3 +1,3 @@
 [workspace]
-members = ["JSC/2019_qual", "ironclad_rule", "contest_prepare"]
+members = ["ABC/399", "ironclad_rule", "contest_prepare"]
 resolver = "2"
