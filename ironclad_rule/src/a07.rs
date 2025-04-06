@@ -1,22 +1,20 @@
+use itertools::Itertools;
 use proconio::input;
-
 fn main() {
     input! {
         d: usize,
         n: usize,
-        lr: [(usize,usize);n]
+        mut lr: [(usize,usize);n]
     };
-    let mut at = vec![0; d + 2];
-    for i in 0..n {
-        at[lr[i].0] += 1;
-        at[lr[i].1 + 1] -= 1;
+    let mut plus = vec![0; d + 1];
+    let mut minus = vec![0; d + 2];
+    for (l, r) in &lr {
+        plus[*l] += 1;
+        minus[*r + 1] += 1;
     }
-
-    let mut res = vec![0; d + 1];
-    for i in 1..=d {
-        res[i] = res[i - 1] + at[i];
+    let mut sums = vec![0; d + 1];
+    for i in 0..d {
+        sums[i + 1] += sums[i] + plus[i + 1] - minus[i + 1];
     }
-    for i in 1..=d {
-        println!("{}", res[i]);
-    }
+    println!("{}", sums.iter().skip(1).join("\n"));
 }
