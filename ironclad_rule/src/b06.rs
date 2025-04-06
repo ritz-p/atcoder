@@ -3,25 +3,23 @@ use proconio::input;
 fn main() {
     input! {
         n: usize,
-        mut a: [usize;n],
+        a: [usize;n],
         q: usize,
+        lr: [(usize,usize);q]
     };
-    for i in 1..n {
-        a[i] += a[i - 1];
+    let mut sums = vec![0; n + 1];
+
+    for i in 0..n {
+        sums[i + 1] = a[i] + sums[i];
     }
-    for _ in 0..q {
-        input! {
-            l: usize,
-            r: usize,
-        };
-        let current = a[r - 1] as isize - if l - 1 == 0 { 0 } else { a[l - 2] as isize };
-        let lose = r as isize - l as isize + 1;
-        if current * 2 > lose {
-            println!("win");
-        } else if current * 2 < lose {
-            println!("lose");
-        } else if current * 2 == lose {
+
+    for (l, r) in &lr {
+        if sums[*r] - sums[l - 1] == (r - l + 1) / 2 && (r - l + 1) % 2 == 0 {
             println!("draw");
+        } else if sums[*r] - sums[l - 1] > (r - l + 1) / 2 {
+            println!("win");
+        } else {
+            println!("lose");
         }
     }
 }
