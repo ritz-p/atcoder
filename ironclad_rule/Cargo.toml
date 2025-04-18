@@ -230,6 +230,10 @@ name = "b07"
 path = "src/b07.rs"
 
 [[bin]]
+name = "b08"
+path = "src/b08.rs"
+
+[[bin]]
 name = "b16"
 path = "src/b16.rs"
 
