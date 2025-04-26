@@ -50,6 +50,10 @@ name = "a10"
 path = "src/a10.rs"
 
 [[bin]]
+name = "a11"
+path = "src/a11.rs"
+
+[[bin]]
 name = "a13"
 path = "src/a13.rs"
 
