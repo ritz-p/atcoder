@@ -242,6 +242,10 @@ name = "b09"
 path = "src/b09.rs"
 
 [[bin]]
+name = "b11"
+path = "src/b11.rs"
+
+[[bin]]
 name = "b16"
 path = "src/b16.rs"
 
