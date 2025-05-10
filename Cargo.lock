@@ -3,13 +3,12 @@
 version = 4
 
 [[package]]
-name = "abc_404"
+name = "abc_212"
 version = "0.1.0"
 dependencies = [
  "ac-library-rs",
- "itertools 0.13.0",
- "proconio 0.5.0",
- "superslice",
+ "itertools 0.10.5",
+ "proconio",
 ]
 
 [[package]]
@@ -44,7 +43,7 @@ name = "ironclad_rule"
 version = "0.1.0"
 dependencies = [
  "itertools 0.10.5",
- "proconio 0.4.5",
+ "proconio",
 ]
 
 [[package]]
@@ -81,12 +80,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0eb404616795079e2390e7115acf0ada24e9332e8476de2aada7bacb9992dc9e"
 
 [[package]]
-name = "proconio"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c10091de86d0dc939b37a115d74597cbe83af470032a1729d50c98ccee043cb0"
-
-[[package]]
 name = "quote"
 version = "1.0.38"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -119,12 +112,6 @@ dependencies = [
  "rustversion",
  "syn",
 ]
-
-[[package]]
-name = "superslice"
-version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ab16ced94dbd8a46c82fd81e3ed9a8727dac2977ea869d217bcc4ea1f122e81f"
 
 [[package]]
 name = "syn"
