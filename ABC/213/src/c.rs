@@ -1,3 +1,5 @@
+use std::collections::BTreeMap;
+
 use proconio::input;
 
 fn main() {
@@ -5,22 +7,24 @@ fn main() {
         _h: usize,
         _w: usize,
         n: usize,
-        ab: [(usize,usize);n]
+        mut ab: [(usize,usize);n]
     };
-    let mut v = vec![];
-    let mut h = vec![];
-    for (a, b) in &ab {
-        v.push(*a);
-        h.push(*b);
-    }
-    v.sort();
-    h.sort();
-    v.dedup();
-    h.dedup();
+    let mut r: Vec<usize> = ab.iter().map(|&(a, _)| a).collect();
+    let mut c: Vec<usize> = ab.iter().map(|&(_, b)| b).collect();
+    r.sort();
+    c.sort();
 
-    for (a, b) in &ab {
-        let a_pos = v.binary_search(a).unwrap();
-        let b_pos = h.binary_search(b).unwrap();
-        println!("{} {}", a_pos + 1, b_pos + 1);
+    // 同じ列または行に並んでいる場合があるので dedup
+    r.dedup();
+    c.dedup();
+    let rmap: BTreeMap<usize, usize> = r
+        .into_iter()
+        .enumerate()
+        .map(|(i, x)| (x, i + 1)) // 1-indexed
+        .collect();
+    let cmap: BTreeMap<usize, usize> = c.into_iter().enumerate().map(|(i, x)| (x, i + 1)).collect();
+
+    for (a, b) in ab {
+        println!("{} {}", rmap[&a], cmap[&b]);
     }
 }
