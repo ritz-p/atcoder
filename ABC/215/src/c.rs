@@ -1,12 +1,16 @@
 use itertools::Itertools;
-use proconio::marker::Chars;
-use proconio::input;
+use proconio::{input, marker::Chars};
+
 fn main() {
     input! {
         mut s: Chars,
         k: usize,
     };
     s.sort();
-    let permutation = s.iter().permutations(s.len()).unique().collect::<Vec<_>>();
-    println!("{}", permutation[k - 1].iter().join(""));
+    for (index, cs) in s.iter().permutations(s.len()).unique().enumerate() {
+        if index == k - 1 {
+            println!("{}", cs.into_iter().collect::<String>());
+            break;
+        }
+    }
 }
