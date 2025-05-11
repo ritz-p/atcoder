@@ -5,7 +5,6 @@
 ### permutations
 
     - 被りありで同じ値が一度のみでてくる(0,1),(1,0)
-    - 使い方
 
     ```rust
     v.permutation(v.len())
@@ -21,8 +20,34 @@
     (0,1,0,1)
     ```
 
-    - 使い方
-
     ```rust
     v.permutation(v.len()).unique()
     ```
+
+## f64
+
+### floor
+
+    - 小数点以下切り捨て
+
+    ```rust
+    let mut f = 0.9;
+    f = f.floor();
+    ```
+
+## 標準出力
+
+    - 標準出力する
+
+    ```rust
+    let s = 100;
+    println!("{}",res);
+    ```
+
+    - 小数点以下の桁数指定での標準出力
+
+    ```rust
+    let res = 0.0001;
+    println!("{:.4}",res);
+    ```
+    　- 四捨五入されるので必要に応じて floor など使う
