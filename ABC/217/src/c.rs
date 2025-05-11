@@ -4,12 +4,11 @@ use proconio::input;
 fn main() {
     input! {
         n: usize,
-        a: [usize;n]
+        p: [usize;n]
     };
-    let mut v = vec![0; n];
-    for index in 0..n {
-        v[a[index] - 1] = index + 1;
+    let mut res = vec![0; n];
+    for (index, e) in p.iter().enumerate() {
+        res[e - 1] = index + 1;
     }
-
-    println!("{}", v.iter().join(" "));
+    println!("{}", res.iter().join(" "));
 }

@@ -1,4 +1,4 @@
-# 関数メモ
+# 型や関数メモ
 
 ## permutation
 
@@ -51,3 +51,22 @@
     println!("{:.4}",res);
     ```
     　- 四捨五入されるので必要に応じて floor など使う
+
+## HashSet
+
+### new()
+
+    - 空の HashSet を作る
+
+    ```
+    let mut set = HashSet::new();
+    ```
+
+### from_iter()
+
+    - Vec から HashSet を生成する
+
+    ```rust
+    let v = vec![0,1,2];
+    let set: HashSet<usize> = HashSet::from_iter(v);
+    ```
