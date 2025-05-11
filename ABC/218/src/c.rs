@@ -1,69 +1,52 @@
 use proconio::{input, marker::Chars};
+
 fn main() {
     input! {
         n: usize,
-        mut s: [Chars;n],
-        t: [Chars;n]
+        s: [Chars;n],
+        t: [Chars;n],
     };
-
-    let mut s_normalized = normalize(&s, n);
-    let t_normalized = normalize(&t, n);
-    for _ in 0..4 {
-        if is_equal(&s_normalized, &t_normalized, n) {
+    let mut tv = vec![];
+    let mut sv = vec![];
+    for i in 0..n {
+        for j in 0..n {
+            if t[i][j] == '#' {
+                tv.push((i as isize, j as isize));
+            }
+            if s[i][j] == '#' {
+                sv.push((i as isize, j as isize));
+            }
+        }
+    }
+    if sv.len() != tv.len() {
+        println!("No");
+        return;
+    }
+    let l = sv.len();
+    for _i in 0..4 {
+        let diff = (sv[0].0 - tv[0].0, sv[0].1 - tv[0].1);
+        let mut f = true;
+        for j in 0..l {
+            if (sv[j].0 - tv[j].0, sv[j].1 - tv[j].1) != diff {
+                f = false;
+                break;
+            }
+        }
+        if f {
             println!("Yes");
             return;
+        } else {
+            sv = rotate(sv, n);
+            sv.sort();
         }
-        s_normalized = normalize(&rotate(&s_normalized, n), n);
     }
-
     println!("No");
 }
 
-fn rotate(grid: &Vec<Vec<char>>, n: usize) -> Vec<Vec<char>> {
-    let mut rotated = vec![vec!['.'; n]; n];
-    for i in 0..n {
-        for j in 0..n {
-            rotated[j][n - i - 1] = grid[i][j];
-        }
+fn rotate(sv: Vec<(isize, isize)>, n: usize) -> Vec<(isize, isize)> {
+    let mut res = vec![];
+    for i in &sv {
+        res.push((n as isize - 1 - i.1, i.0));
     }
-    rotated
-}
-
-fn normalize(grid: &Vec<Vec<char>>, n: usize) -> Vec<Vec<char>> {
-    let mut min_row = n;
-    let mut min_col = n;
-
-    for i in 0..n {
-        for j in 0..n {
-            if grid[i][j] == '#' {
-                if i < min_row {
-                    min_row = i;
-                }
-                if j < min_col {
-                    min_col = j;
-                }
-            }
-        }
-    }
-
-    let mut normalized = vec![vec!['.'; n]; n];
-    for i in 0..n {
-        for j in 0..n {
-            if grid[i][j] == '#' {
-                normalized[i - min_row][j - min_col] = '#';
-            }
-        }
-    }
-    normalized
-}
-
-fn is_equal(a: &Vec<Vec<char>>, b: &Vec<Vec<char>>, n: usize) -> bool {
-    for i in 0..n {
-        for j in 0..n {
-            if a[i][j] != b[i][j] {
-                return false;
-            }
-        }
-    }
-    true
+    res
 }

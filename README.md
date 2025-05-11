@@ -70,3 +70,31 @@
     let v = vec![0,1,2];
     let set: HashSet<usize> = HashSet::from_iter(v);
     ```
+
+## 座標回転
+
+    - 90 度座標を回転させる
+
+    ```rust
+    fn rotate(sv: Vec<(isize, isize)>, n: usize) -> Vec<(isize, isize)> {
+        let mut res = vec![];
+        for i in &sv {
+            res.push((n as isize - 1 - i.1, i.0));
+        }
+        res
+    }
+    ```
+
+    - 文字列
+
+    ```rust
+    fn rotate(s: Vec<Vec<char>>, n: usize) -> Vec<Vec<char>> {
+        let mut res: Vec<Vec<char>> = vec![vec![]; n];
+        for i in 0..n {
+            for j in 0..n {
+                res[i].push(s[n - 1 - j][i]);
+            }
+        }
+        res
+    }
+    ```
