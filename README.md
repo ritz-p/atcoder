@@ -104,3 +104,11 @@
         res
     }
     ```
+
+## 進数変換
+
+    - String a を K 進数から 10 進数に変換(Result を返すため必要に応じて unwrap() など)
+
+    ```rust
+    usize::from_str_radix(&a, k)
+    ```

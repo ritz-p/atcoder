@@ -6,15 +6,17 @@ fn main() {
         a: [usize;n],
         mut x: usize,
     };
-    let sum = a.iter().sum::<usize>();
-    let div = x / sum;
+    let sum: usize = a.iter().sum();
+    let mut res = x / sum * n;
     x %= sum;
-    for (index, e) in a.iter().enumerate() {
-        if x >= *e {
-            x -= e;
+    for e in a {
+        if x < e {
+            res += 1;
+            break;
         } else {
-            println!("{}", div * n + index + 1);
-            return;
+            x -= e;
+            res += 1;
         }
     }
+    println!("{}", res);
 }
