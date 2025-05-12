@@ -1,5 +1,11 @@
 # 型や関数メモ
 
+## alphabet 作成
+
+    ```rust
+    let alphabet = ('a'..='z').collect::<Vec<char>>();
+    ```
+
 ## permutation
 
 ### permutations

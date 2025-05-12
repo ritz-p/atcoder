@@ -1,28 +1,36 @@
-use proconio::input;
-use proconio::marker::Chars;
-use std::collections::{BTreeMap, HashMap};
+use std::collections::BTreeMap;
+
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
+
 fn main() {
     input! {
         x: Chars,
         n: usize,
         s: [Chars;n]
     };
-    let alphabet: Vec<char> = ('a'..='z').collect();
-    let mut map = HashMap::new();
-    let mut bmap = BTreeMap::new();
-    for (index, e) in x.iter().enumerate() {
-        map.insert(e, alphabet[index]);
+
+    let alphabet = ('a'..='z').collect::<Vec<char>>();
+    let mut cmap = BTreeMap::new();
+    for (index, c) in x.iter().enumerate() {
+        cmap.insert(c, alphabet[index]);
     }
-    for e in s {
-        let mut ss = vec![];
-        for c in &e {
-            if let Some(cc) = map.get(&c) {
-                ss.push(*cc);
+    let mut smap = BTreeMap::new();
+
+    for cs in s {
+        let mut res = vec![];
+        for c in &cs {
+            if let Some(v) = cmap.get(&c) {
+                res.push(*v);
             }
         }
-        bmap.insert(ss.iter().collect::<String>(), e);
+        smap.insert(res, cs);
     }
-    for v in bmap.values() {
-        println!("{}", v.iter().collect::<String>());
-    }
+
+    println!(
+        "{}",
+        smap.values()
+            .map(|s| s.iter().collect::<String>())
+            .join("\n")
+    );
 }
