@@ -1,31 +1,29 @@
-use proconio::{marker::Chars, *};
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
 
 fn main() {
-    input! { n: Chars }
+    input! {
+        mut n: Chars
+    };
+
+    n.sort();
+
     let mut res = 0;
-    for i in 0..1 << n.len() {
-        let mut a = vec![];
-        let mut b = vec![];
-        for j in 0..n.len() {
-            if i >> j & 1 == 0 {
-                a.push(n[j] as usize - b'0' as usize);
-            } else {
-                b.push(n[j] as usize - b'0' as usize);
+    for perm in n.iter().permutations(n.len()) {
+        if perm[0] == &'0' {
+            continue;
+        }
+        for i in 1..n.len() {
+            let l = &perm[0..i];
+            let r = &perm[i..n.len()];
+            if l[0] == &'0' || r[0] == &'0' {
+                continue;
             }
+            let nl: usize = l.iter().map(|c| *c).collect::<String>().parse().unwrap();
+            let nr: usize = r.iter().map(|c| *c).collect::<String>().parse().unwrap();
+            res = res.max(nl * nr);
         }
-        a.sort();
-        b.sort();
-        a.reverse();
-        b.reverse();
-        let mut x = 0;
-        for a in a {
-            x = x * 10 + a;
-        }
-        let mut y = 0;
-        for b in b {
-            y = y * 10 + b;
-        }
-        res = res.max(x * y);
     }
+
     println!("{}", res);
 }
