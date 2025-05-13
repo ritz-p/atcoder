@@ -6,17 +6,45 @@
     let alphabet = ('a'..='z').collect::<Vec<char>>();
     ```
 
+## sort
+
+    - 昇順
+
+    ```rust
+    v.sort();
+    ```
+
+    - 降順
+
+    ```rust
+    v.sort();
+    v.reverse();
+    ```
+
+    - tuple.0 を昇順、tuple.1 を降順
+
+    ```rust
+    v.sort_by(|a,b| {
+        let ord = a.0.cmp(&b.0);
+        if ord == std::cmp::Ordering::Equal {
+            b.1.cmp(&a.1)
+        }else{
+            ord
+        }
+    });
+    ```
+
 ## permutation
 
-### permutations
+### permutations()
 
     - 被りありで同じ値が一度のみでてくる(0,1),(1,0)
 
     ```rust
-    v.permutation(v.len())
+    v.permutatios(v.len())
     ```
 
-### permutation().unique()
+### permutations().unique()
 
     - (0,0,1,1) などで同じ値が複数あるときに並びが同じとき重複をなくす
 
