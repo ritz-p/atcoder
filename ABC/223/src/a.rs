@@ -1,5 +1,12 @@
 use proconio::input;
 
 fn main() {
-    input! {};
+    input! {
+        x: usize,
+    };
+    if x % 100 == 0 && x >= 100 {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }
