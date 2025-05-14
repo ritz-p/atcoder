@@ -1,38 +1,37 @@
+use std::{
+    collections::{HashSet, VecDeque},
+    iter::FromIterator,
+};
+
 use proconio::input;
-use std::collections::HashSet;
 
 fn main() {
     input! {
-        n: usize
+        n: usize,
     };
-    let mut av = vec![vec![]; n];
-    let mut tv = vec![];
-    let mut kv = vec![];
-    for i in 0..n {
+    let mut query = vec![];
+    for _i in 0..n {
         input! {
             t: usize,
             k: usize,
+            a: [usize;k]
         };
-        tv.push(t);
-        kv.push(k);
-        for _j in 0..k {
-            input! {
-                a: usize
-            };
-            av[i].push(a);
-        }
+        query.push((t, a));
     }
-    let mut visited = HashSet::new();
-    visited.insert(n - 1);
+    let mut res = query[n - 1].0;
+    let mut queue = VecDeque::from_iter(query[n - 1].1.iter());
+    let mut set = HashSet::new();
 
-    let mut res = 0;
-    for i in (0..n).rev() {
-        if visited.contains(&i) {
-            res += tv[i];
-            for j in 0..kv[i] {
-                visited.insert(av[i][j] - 1);
-            }
+    while let Some(v) = queue.pop_front() {
+        if set.contains(&(v - 1)) {
+            continue;
+        }
+        set.insert(v - 1);
+        res += query[v - 1].0;
+        for q in &query[*v - 1].1 {
+            queue.push_back(q);
         }
     }
+
     println!("{}", res);
 }
