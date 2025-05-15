@@ -1,22 +1,25 @@
 use proconio::input;
+
 fn main() {
     input! {
         n: usize,
         k: usize,
-        p: [(usize,usize,usize);n]
-    };
-    let mut sum = vec![];
-    for (p1, p2, p3) in p {
-        sum.push(p1 + p2 + p3);
+        p: [[usize;3];n]
     }
-    let mut sum2 = sum.clone();
-    sum2.sort();
-    let border = sum2[n - k];
-    for i in 0..n {
-        if sum[i] + 300 >= border {
-            println!("Yes")
+    let mut sums = vec![];
+    for (index, v) in p.iter().enumerate() {
+        let sum = v.iter().sum::<usize>();
+        sums.push((sum, index));
+    }
+    sums.sort_by(|a, b| b.0.cmp(&a.0));
+    let base = sums[k - 1].0;
+    sums.sort_by(|a, b| a.1.cmp(&b.1));
+
+    for (sum, _i) in sums {
+        if sum + 300 >= base {
+            println!("Yes");
         } else {
-            println!("No")
+            println!("No");
         }
     }
 }
