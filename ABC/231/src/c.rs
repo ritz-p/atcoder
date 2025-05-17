@@ -8,8 +8,8 @@ fn main() {
         x: [usize;q]
     };
     a.sort();
-    for query in x {
-        let point = a.partition_point(|v| *v < query);
-        println!("{}", n - point);
+    for e in x {
+        let p = a.partition_point(|v| *v < e);
+        println!("{}", n - p);
     }
 }

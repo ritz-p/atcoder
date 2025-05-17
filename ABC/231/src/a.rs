@@ -1,5 +1,8 @@
 use proconio::input;
 
 fn main() {
-    input! {};
+    input! {
+        n: f64
+    };
+    println!("{}", n / 100.0);
 }
