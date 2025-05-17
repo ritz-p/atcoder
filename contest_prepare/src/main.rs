@@ -56,14 +56,14 @@ fn main() {
             break;
         }
 
-        print!("Contest number?: ");
+        print!("Contest title?: ");
         io::stdout().flush().unwrap();
 
-        let mut contest_number = String::new();
+        let mut contest_title = String::new();
         io::stdin()
-            .read_line(&mut contest_number)
+            .read_line(&mut contest_title)
             .expect("Failed to read line");
-        let contest_number = contest_number.trim();
+        let contest_title = contest_title.trim();
         let contest_prefix = match contest_type {
             ContestType::Abc => "ABC",
             ContestType::Arc => "ARC",
@@ -71,13 +71,13 @@ fn main() {
             ContestType::Jsc => "JSC",
             ContestType::Exit => unreachable!(),
         };
-        let project_path = format!("{}/{}", contest_prefix, contest_number);
+        let project_path = format!("{}/{}", contest_prefix, contest_title);
         if fs::metadata(&project_path).is_ok() {
             eprintln!(
                 "Directory '{}' already exists. Changed contest target in Cargo.toml",
                 project_path
             );
-            change_target(&contest_prefix, &contest_number);
+            change_target(&contest_prefix, &contest_title);
             run_command(&toml_command, &vec!["format", "Cargo.toml"]);
             exit(1);
         }
@@ -89,7 +89,7 @@ fn main() {
             format!(
                 "name = \"{}_{}\"",
                 contest_prefix.to_lowercase(),
-                contest_number
+                contest_title
             ),
             "version = \"0.1.0\"".to_string(),
             "edition = \"2018\"".to_string(),
@@ -124,12 +124,12 @@ fn main() {
             fs::write(&cargo_toml_path, current_toml).expect("Failed to update project Cargo.toml");
         }
         run_command(&toml_command, &vec!["format", &cargo_toml_path]);
-        change_target(contest_prefix, contest_number);
+        change_target(contest_prefix, contest_title);
         run_command(&toml_command, &vec!["format", "Cargo.toml"]);
         run_command(&cargo_command, &vec!["fmt"]);
         println!(
             "Project created successfully in {}/{}",
-            contest_prefix, contest_number
+            contest_prefix, contest_title
         );
         break;
     }
@@ -154,9 +154,9 @@ fn run_command(command: &str, args: &[&str]) {
     }
 }
 
-fn change_target(contest_prefix: &str, contest_number: &str) {
+fn change_target(contest_prefix: &str, contest_title: &str) {
     let workspace_projects = vec![
-        format!("\"{}/{}\"", contest_prefix, contest_number),
+        format!("\"{}/{}\"", contest_prefix, contest_title),
         "\"ironclad_rule\"".to_string(),
         "\"contest_prepare\"".to_string(),
     ]

@@ -148,3 +148,38 @@
     ```
     (x2−x1)(y3−y1)−(x3−x1)(y2−y1) != 0
     ```
+
+## 0 埋め
+
+    - n を 0 埋めにする(例では3桁)
+
+    ```rust
+    let n = 1;
+    let s = format!("{0:>3}",n);
+    ```
+
+## 配列
+
+    - 要素をスキップする(0 ではなく n から開始する)
+
+    ```rust
+    for (index,element) in v.iter().enumerate().skip(n){
+
+    }
+    ```
+
+## 区間スケジュール
+
+    - 区間のおおきいほうを昇順にソートしておおきいほうを基準として計算を回していく
+
+    ```rust
+    let mut lr = vec![(1,3),(2,2),(3,1)];
+    lr.sort_by(|a,b|a.1.cmp(&b.1));
+    let mut current = isize::MIN;
+    let base = 1;
+    for (l,r) in lr{
+        if current + base < l{
+            //何か処理
+        }
+    }
+    ```

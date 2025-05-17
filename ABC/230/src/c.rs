@@ -3,7 +3,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        _n: usize,
+        _n: isize,
         a: isize,
         b: isize,
         p: isize,
@@ -11,22 +11,22 @@ fn main() {
         r: isize,
         s: isize,
     };
-    let sum = a + b;
-    let diff = a - b;
+    let mut res = vec![vec!['.'; (s - r + 1) as usize]; (q - p + 1) as usize];
 
-    let mut v = vec![vec!['.'; s as usize - r as usize + 1]; q as usize - p as usize + 1];
-    for i in p..=q {
-        for j in r..=s {
-            if (i + j) as isize == sum {
-                v[i as usize - p as usize][j as usize - r as usize] = '#';
-            }
-            if i as isize - j as isize == diff {
-                v[i as usize - p as usize][j as usize - r as usize] = '#';
-            }
-        }
+    let kl = (p - a).max(r - b);
+    let kr = (q - a).min(s - b);
+
+    for i in kl..=kr {
+        res[(a + i - p) as usize][(b + i - r) as usize] = '#';
     }
 
-    for i in v {
-        println!("{}", i.iter().join(""));
+    let ll = (p - a).max(b - s);
+    let lr = (q - a).min(b - r);
+    for i in ll..=lr {
+        res[(a + i - p) as usize][(b - i - r) as usize] = '#';
+    }
+
+    for c in res {
+        println!("{}", c.iter().join(""));
     }
 }
