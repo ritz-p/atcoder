@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use proconio::input;
 
 fn main() {
@@ -5,30 +7,30 @@ fn main() {
         n: usize,
         x: usize,
     };
-    let mut a = vec![];
+    let mut v = vec![];
     for _i in 0..n {
         input! {
             l: usize,
-            la: [usize;l]
+            a: [usize;l]
         };
-        a.push(la);
+        v.push(a);
     }
     let mut res = 0;
-    dfs(&a, 0, 1, n, x, &mut res);
+    dfs(&v, 0, 1, n, x, &mut res);
     println!("{}", res);
 }
 
-fn dfs(a: &Vec<Vec<usize>>, current: usize, total: usize, n: usize, x: usize, res: &mut usize) {
+fn dfs(v: &Vec<Vec<usize>>, current: usize, total: usize, n: usize, x: usize, res: &mut usize) {
     if current == n {
         if total == x {
             *res += 1;
         }
         return;
     }
-    for c in &a[current] {
-        if total > x / c {
+    for e in &v[current] {
+        if total > x / e {
             continue;
         }
-        dfs(a, current + 1, total * c, n, x, res);
+        dfs(v, current + 1, total * e, n, x, res);
     }
 }
