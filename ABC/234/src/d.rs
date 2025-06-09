@@ -1,24 +1,24 @@
+use std::{cmp::Reverse, collections::BinaryHeap};
+
 use proconio::input;
+
 fn main() {
     input! {
         n: usize,
         k: usize,
-        p: [usize;n]
-    };
-    let mut v = vec![false; n + 1];
-    for i in 0..k {
-        v[p[i]] = true;
+        a: [isize; n],
     }
-    let mut x = p[..k].iter().copied().min().unwrap();
-    println!("{}", x);
-    for i in k..n {
-        if p[i] > x {
-            v[x] = false;
-            v[p[i]] = true;
+
+    let mut heap = BinaryHeap::new();
+
+    for a in a {
+        heap.push(Reverse(a));
+        if heap.len() > k {
+            heap.pop();
         }
-        while !v[x] {
-            x += 1;
+        if heap.len() == k {
+            let Reverse(ans) = heap.peek().unwrap();
+            println!("{}", ans);
         }
-        println!("{}", x);
     }
 }

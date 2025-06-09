@@ -183,3 +183,16 @@
         }
     }
     ```
+
+## 配列の結合
+
+- extend_from_slice
+
+  ```rust
+  let from = vec![1,2,3,4,5,6];
+  let mut v = vec![];
+  let n = 3;
+  v.extend_from_slice(from[0..n]);
+  v.extend_from_slice(from[n..5]);
+  // [1,2,3,4]
+  ```
