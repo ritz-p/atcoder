@@ -1,65 +1,42 @@
+use std::collections::VecDeque;
+
 use proconio::input;
+
 fn main() {
     input! {
         n: usize,
         m: usize,
-        abw: [(usize,usize,usize);m]
-    };
+        abw: [(usize, usize, usize); m]
+    }
 
     let mut graph = vec![vec![]; n];
-
-    for (a, b, w) in abw {
+    for (a, b, w) in &abw {
         graph[a - 1].push((b - 1, w));
     }
 
-    let mut dist = vec![usize::MAX; n];
-    let mut visited = vec![false; n];
-    let mut basis = vec![];
+    let mut visited = vec![vec![false; 1024]; n];
 
-    dist[0] = 0;
-    dfs(0, usize::MAX, &graph, &mut visited, &mut dist, &mut basis);
+    let mut queue = VecDeque::new();
 
-    if dist[n - 1] != usize::MAX {
-        let mut res = dist[n - 1];
-        for &b in &basis {
-            if res ^ b < res {
-                res ^= b;
+    visited[0][0] = true;
+    queue.push_back((0, 0));
+
+    while let Some((current, xor)) = queue.pop_front() {
+        for &(goal, weight) in &graph[current] {
+            let next = xor ^ weight;
+
+            if !visited[goal][next] {
+                visited[goal][next] = true;
+                queue.push_back((goal, next));
             }
         }
-        println!("{}", res);
-    } else {
-        println!("-1");
     }
-}
 
-fn dfs(
-    v: usize,
-    start: usize,
-    graph: &Vec<Vec<(usize, usize)>>,
-    visited: &mut Vec<bool>,
-    dist: &mut Vec<usize>,
-    basis: &mut Vec<usize>,
-) {
-    visited[v] = true;
-    for &(goal, w) in &graph[v] {
-        let next = dist[v] ^ w;
-        if !visited[goal] {
-            dist[goal] = next;
-            dfs(goal, v, graph, visited, dist, basis);
-        } else if start != v {
-            let cycle = dist[goal] ^ next;
-            xor(basis, cycle);
+    for (index, res) in visited[n - 1].iter().enumerate() {
+        if *res == true {
+            println!("{}", index);
+            return;
         }
     }
-}
-
-fn xor(basis: &mut Vec<usize>, mut x: usize) {
-    for &b in basis.iter() {
-        if (x ^ b) < x {
-            x ^= b;
-        }
-    }
-    if x != 0 {
-        basis.push(x);
-    }
+    println!("{}", -1);
 }
