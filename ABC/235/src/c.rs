@@ -10,16 +10,13 @@ fn main() {
     let mut map: HashMap<usize, Vec<usize>> = HashMap::new();
 
     for (index, e) in a.iter().enumerate() {
-        if let Some(v) = map.get_mut(e) {
-            v.push(index);
-        } else {
-            map.insert(*e, vec![index]);
-        }
+        map.entry(*e).or_insert(vec![]).push(index + 1);
     }
+
     for (x, k) in xk {
         if let Some(v) = map.get(&x) {
             if v.len() > k - 1 {
-                println!("{}", v[k - 1] + 1);
+                println!("{}", v[k - 1]);
             } else {
                 println!("-1");
             }
