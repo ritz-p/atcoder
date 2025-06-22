@@ -1,5 +1,5 @@
 [package]
-name = "adt_easy_2025061920230"
+name = "adt_all_202506192030"
 version = "0.1.0"
 edition = "2018"
 [dependencies]
@@ -28,6 +28,12 @@ path = "src/f.rs"
 [[bin]]
 name = "g"
 path = "src/g.rs"
+[[bin]]
+name = "h"
+path = "src/h.rs"
+[[bin]]
+name = "i"
+path = "src/i.rs"
 [[bin]]
 name = "ex"
 path = "src/ex.rs"

@@ -109,7 +109,7 @@ fn main() {
         fs::write(&cargo_toml_path, cargo_toml_content)
             .expect("Failed to write project Cargo.toml");
 
-        let problems = ["A", "B", "C", "D", "E", "F", "G", "Ex"];
+        let problems = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "Ex"];
         for p in problems.iter() {
             let lower = p.to_lowercase();
             let rs_path = format!("{}/{}.rs", src_path, lower);

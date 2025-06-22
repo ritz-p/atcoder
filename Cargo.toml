@@ -1,3 +1,3 @@
 [workspace]
-members = ["ADT/easy_2025061920230", "ironclad_rule", "contest_prepare"]
+members = ["ADT/all_202506192030", "ironclad_rule", "contest_prepare"]
 resolver = "2"
