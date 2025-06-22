@@ -186,13 +186,46 @@
 
 ## 配列の結合
 
-- extend_from_slice
+    - extend_from_slice
+
+    ```rust
+    let from = vec![1,2,3,4,5,6];
+    let mut v = vec![];
+    let n = 3;
+    v.extend_from_slice(from[0..n]);
+    v.extend_from_slice(from[n..5]);
+    // [1,2,3,4]
+    ```
+
+## BTreeMap
+
+- pop_first()
+
+  - BTreeMap 内の一番小さい key を pop する
+    - BTreeMap を更新することもできる
 
   ```rust
-  let from = vec![1,2,3,4,5,6];
-  let mut v = vec![];
-  let n = 3;
-  v.extend_from_slice(from[0..n]);
-  v.extend_from_slice(from[n..5]);
-  // [1,2,3,4]
+  let mut bmap = BTreeMap::new();
+  for i in 0..n{
+      bmap.insert(i,i);
+  }
+  while let Some((k,v)) = bmap.pop_first(){
+      // 処理
+  }
+  ```
+
+- pop_last()
+
+  - BTreeMap 内の一番大きい key を pop する
+    - BTreeMap を更新することもできる
+
+  ```rust
+  let mut bmap = BTreeMap::new();
+  for i in 0..n{
+      bmap.insert(i,i);
+  }
+  while let Some((k,v)) = bmap.pop_last(){
+      // bmap の更新処理
+      bmap.insert(k*2,v+2);
+  }
   ```
