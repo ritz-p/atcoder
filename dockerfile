@@ -1,4 +1,4 @@
-FROM rust:latest
+FROM rust:1.86
 
 RUN apt update && \
     apt install vim clang cmake libssl-dev build-essential -y

@@ -10,6 +10,7 @@ enum ContestType {
     Abc,
     Arc,
     Agc,
+    Adt,
     Jsc,
     Exit,
 }
@@ -18,8 +19,9 @@ fn parse_contest_type(input: &str) -> Option<ContestType> {
         "1" => Some(ContestType::Abc),
         "2" => Some(ContestType::Arc),
         "3" => Some(ContestType::Agc),
-        "4" => Some(ContestType::Jsc),
-        "5" => Some(ContestType::Exit),
+        "4" => Some(ContestType::Adt),
+        "5" => Some(ContestType::Jsc),
+        "6" => Some(ContestType::Exit),
         _ => None,
     }
 }
@@ -68,6 +70,7 @@ fn main() {
             ContestType::Abc => "ABC",
             ContestType::Arc => "ARC",
             ContestType::Agc => "AGC",
+            ContestType::Adt => "ADT",
             ContestType::Jsc => "JSC",
             ContestType::Exit => unreachable!(),
         };
