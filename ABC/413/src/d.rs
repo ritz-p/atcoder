@@ -5,46 +5,29 @@ fn main() {
     let mut res = Vec::with_capacity(t);
 
     for _ in 0..t {
-        input! { n: usize, mut a: [isize; n] }
+        input! { n: usize, a: [isize; n] }
         if n <= 2 {
             res.push("Yes");
             continue;
         }
-        a.sort_unstable();
-        let mut abs = a.iter().map(|&v| v.abs()).collect::<Vec<isize>>();
-        abs.sort_unstable();
+        let pos = a.iter().filter(|&&v| v == a[0]).count();
+        let neg = a.iter().filter(|&&v| v == -a[0]).count();
+        if pos + neg == n && pos.min(neg) == n / 2 {
+            res.push("Yes");
+            continue;
+        }
 
-        if abs.windows(2).any(|w| w[0] == w[1]) {
+        let mut abs = a
+            .iter()
+            .map(|&v| (v, v.abs()))
+            .collect::<Vec<(isize, isize)>>();
+        abs.sort_by(|k, v| k.1.cmp(&v.1));
+
+        if abs.windows(3).any(|w| w[1].0 * w[1].0 != w[0].0 * w[2].0) {
             res.push("No");
             continue;
         }
-        if abs.windows(3).any(|w| w[1] * w[1] != w[0] * w[2]) {
-            res.push("No");
-            continue;
-        }
-        if abs[0] == abs[n - 1] {
-            let pos = a.iter().filter(|&&v| v > 0).count();
-            let neg = n - pos;
-            if pos == n || neg == n {
-                res.push("Yes");
-            } else {
-                let pos1 = (n + 1) / 2;
-                let pos2 = n / 2;
-                if (pos == pos1 && neg == pos2) || (pos == pos2 && neg == pos1) {
-                    res.push("Yes");
-                } else {
-                    res.push("No");
-                }
-            }
-        } else {
-            let pos = a.iter().filter(|&&v| v > 0).count();
-            let neg = n - pos;
-            if pos == n || neg == n {
-                res.push("Yes");
-            } else {
-                res.push("No");
-            }
-        }
+        res.push("Yes");
     }
 
     println!("{}", res.join("\n"));
