@@ -12,6 +12,7 @@ enum ContestType {
     Agc,
     Adt,
     Jsc,
+    Other,
     Exit,
 }
 fn parse_contest_type(input: &str) -> Option<ContestType> {
@@ -21,7 +22,8 @@ fn parse_contest_type(input: &str) -> Option<ContestType> {
         "3" => Some(ContestType::Agc),
         "4" => Some(ContestType::Adt),
         "5" => Some(ContestType::Jsc),
-        "6" => Some(ContestType::Exit),
+        "6" => Some(ContestType::Other),
+        "7" => Some(ContestType::Exit),
         _ => None,
     }
 }
@@ -72,6 +74,7 @@ fn main() {
             ContestType::Agc => "AGC",
             ContestType::Adt => "ADT",
             ContestType::Jsc => "JSC",
+            ContestType::Other => "OTHER",
             ContestType::Exit => unreachable!(),
         };
         let project_path = format!("{}/{}", contest_prefix, contest_title);
